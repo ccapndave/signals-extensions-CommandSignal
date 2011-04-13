@@ -1,11 +1,12 @@
 package org.robotlegs.base
 {
+	import flash.utils.Dictionary;
+	import flash.utils.describeType;
+	
 	import org.osflash.signals.ISignal;
 	import org.robotlegs.core.IInjector;
 	import org.robotlegs.core.ISignalCommandMap;
-
-	import flash.utils.Dictionary;
-	import flash.utils.describeType;
+	import org.robotlegs.mvcs.SignalArgumentsCommand;
 
 	public class SignalCommandMap implements ISignalCommandMap
     {
@@ -86,9 +87,15 @@ package org.robotlegs.base
 
         protected function routeSignalToCommand(signal:ISignal, valueObjects:Array, commandClass:Class, oneshot:Boolean):void
         {
-            mapSignalValues( signal.valueClasses, valueObjects );
-            createCommandInstance( commandClass).execute();
-            unmapSignalValues( signal.valueClasses, valueObjects );
+			if (new commandClass() is SignalArgumentsCommand) {
+				var commandInstance:Object = createCommandInstance( commandClass);
+				commandInstance.execute.apply(commandInstance, valueObjects);
+			} else {
+            	mapSignalValues( signal.valueClasses, valueObjects );
+            	createCommandInstance( commandClass).execute();
+            	unmapSignalValues( signal.valueClasses, valueObjects );
+			}
+			
             if ( oneshot )
                 unmapSignal( signal, commandClass );
         }

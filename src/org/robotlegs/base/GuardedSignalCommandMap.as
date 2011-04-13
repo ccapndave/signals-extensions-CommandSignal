@@ -5,6 +5,7 @@ import flash.utils.describeType;
 import org.osflash.signals.ISignal;
 import org.robotlegs.core.IGuardedSignalCommandMap;
 import org.robotlegs.core.IInjector;
+import org.robotlegs.mvcs.SignalArgumentsCommand;
 
 public class GuardedSignalCommandMap extends SignalCommandMap implements IGuardedSignalCommandMap {
 
@@ -81,6 +82,10 @@ public class GuardedSignalCommandMap extends SignalCommandMap implements IGuarde
 
         var command:Object = injector.instantiate(commandToInstantiate);
         unmapSignalValues(signal.valueClasses, valueObjects);
+		
+		if (command is SignalArgumentsCommand)
+			throw new Error("SignalArgumentsCommand does not currently support GuardedSignals");
+		
         command.execute();
 
         if (oneshot)
