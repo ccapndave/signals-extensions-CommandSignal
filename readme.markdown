@@ -4,17 +4,18 @@ This fork is a quick and dirty edit of Joel Hooks' original signals-extension-Co
 
 To make use of this functionality your command needs to extend `SignalArgumentsCommand` and implement an `execute()` method:
 
-```as3
-// The command class
-public class MyCommand extends SignalArgumentsCommand {
-  
-  [Inject]
-  public var myModel:MyModel;
-
-  public function execute(param1:String, param2:String, param3:Boolean) {
-  }
-
-}
+ ```as3
+ // The command class
+ public class MyCommand extends SignalArgumentsCommand {
+   
+   [Inject]
+   public var myModel:MyModel;
+ 
+   public function execute(param1:String, param2:String, param3:Boolean) {
+   }
+ 
+ }
+ ```
 
 // The signal
 var executeMyCommandSignal:Signal = new Signal(String, String, Boolean);
