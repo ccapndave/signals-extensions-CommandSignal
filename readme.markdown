@@ -1,4 +1,4 @@
-This fork is a quick and dirty edit of Joel Hooks' original signals-extension-CommandSignal that allows the signal arguments to be passed into the execute() method as parameters instead of being injected into the command.  This allows multiple parameters of the same type
+This fork is a quick and dirty edit of Joel Hooks' original signals-extension-CommandSignal that allows the signal arguments to be passed into the execute() method as parameters instead of being injected into the command.  This allows signals to trigger commands with multiple parameters of the same type, and also allows optional arguments.
 
 ## Usage
 
