@@ -10,7 +10,7 @@ To make use of this functionality your command needs to extend `SignalArgumentsC
        [Inject] 
        public var myModel:MyModel;
  
-       public function execute(param1:String, param2:String, param3:Boolean) {
+       public function execute(param1:String, param2:String, param3:Boolean):void {
        }
  
      }
