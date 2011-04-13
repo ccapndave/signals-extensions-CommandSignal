@@ -15,10 +15,8 @@ To make use of this functionality your command needs to extend `SignalArgumentsC
  
      }
 
-// The signal
-var executeMyCommandSignal:Signal = new Signal(String, String, Boolean);
-
-```
+     // The signal
+     var executeMyCommandSignal:Signal = new Signal(String, String, Boolean);
 
 Note that if the command doesn't extend SignalArgumentsCommand the parameters will get injected as usual.
 
